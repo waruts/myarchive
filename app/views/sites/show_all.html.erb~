@@ -1,0 +1,24 @@
+<h1>All archived sites</h1>
+
+<table>
+  <tr>
+    <th>URL</th>
+    <th>Cache URL</th>
+    <th>Time</th>
+    <th></th>
+  </tr>
+
+<% @sites.each do |site| %>
+  <% address = "/archive/public/" + site.hash_name + "/" + site.url %>
+  <tr>
+    <td><a href="http://<%= site.url %>"> <%= site.url %></a> <br/></td>
+    <td><a href="<%= address %>"> http://warutsuk.scripts.mit.edu<%= address %></a></td>
+    <td><%= site.created_at %></td>
+    <td><%= link_to 'Destroy', site, method: :delete, confirm: 'Hey, are you sure?' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Site', new_site_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<% @address = "/archive/public/" + @site.hash_name + "/" + @site.url %>
+
+<p>
+You just cached <a href="http://<%= @site.url %>"> <%= @site.url %></a> <br/>
+
+at URL <a href="<%= @address %>"> http://warutsuk.scripts.mit.edu<%= @address %></a> <br/>
+
+at time <%= @site.created_at %>
+</p>
+
+<p>
+<%= link_to 'Archive a new site', new_site_path %>
+</p>
+
+<p>
+<%= link_to 'Show all archived sites', show_all_path %>
+</p>
+
+<!--
+<p>
+  <b>Hash Name:</b>
+  <%= @site.hash_name %>
+</p>
+
+<p>
+  <b>URL:</b>
+  <%= @site.url %>
+</p>
+
+<p>
+  <b>HTML:</b>
+  <%= @site.html %>
+</p>
+
+
+<%= link_to 'Back', sites_path %>
+
+-->

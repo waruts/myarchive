@@ -1,0 +1,158 @@
+body, h1, h2, h3, h4, h5, h6, img, fieldset {
+    margin: 0;
+	padding: 0;
+	outline: 0;
+	border: 0;
+	
+}
+
+html {
+	background-color: #000000;
+}
+
+body {
+    background-color: #EEEEEE;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a {
+    font-family: "Trebuchet MS","Verdana","Tahoma",sans-serif;
+    font-size: 14px;
+}
+
+h1 {
+    font-family: "Trebuchet MS","Verdana","Tahoma",sans-serif !important;
+    color: #56753D;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px 0 0;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+}
+
+h3 {
+    color: #228800;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+h4 {
+    color: #228800;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.adv {
+    background-color: #D9E0D3;
+    margin: 30px 0;
+    padding: 10px 0;
+}
+
+div#navbarwrap, div#footbarwrap {
+    background-color: #000000;
+    min-width: 960px;
+    /*background-image: url('images/navbg.png');
+    background-repeat: repeat-x;*/
+    padding: 0 0;  
+}
+  
+div#navbar {  
+    padding: 0 0;
+    height: 40px;
+    line-height: 40px;
+}
+
+div#footbar {
+    padding: 0 0;
+    height: 20px;
+    line-height: 20px;
+}
+
+div#boldbar {
+    background-color: #228800;
+    padding: 0 0;
+    height: 6px;
+}
+
+div#navbar ul{  
+    list-style: none;  
+    display: block;  
+    margin: 0 0;
+}
+
+div#navbar .logo {
+    height: 40px;
+    margin: 5px;
+}
+  
+div#navbar ul li, div#navbar p, div#navbar a {
+    float: left;
+    margin: 0 0.5em;  
+    font-family: 'Arial';
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #D0D0D0;
+}
+
+div#footbar p, div#footbar a {
+    /*float: left;*/
+    margin: 0 0.5em;  
+    font-family: 'Arial';
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #D0D0D0;
+}  
+
+.user, .follow {
+	float: right;
+	z-index: 100;
+}
+
+.tips {
+    font-size: 0.7em;
+    color: #999999;
+}
+
+div.spacer {   
+    height: 1em;  
+}
+
+textarea { 
+    resize: none; 
+}
+
+label, input, textarea {
+    display: block;
+}
+
+.noblock input {
+    display: inline;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+label.required_field {
+    font-weight: bold;
+}
+
+#notice {
+    color: red;
+}
+
+code.programming, pre.programming {
+    background-color: #FFFF99;
+    font-family: "Courier New";
+    font-size: 12px;
+}
+
+img {
+    padding:1px;
+    border:1px solid #021a40;
+    width: 100%;
+}
+

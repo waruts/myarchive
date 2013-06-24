@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+Your attempt of archiving <a href="http://<%= params[:url] %>"> <%= params[:url] %></a> was unsuccessful.
+</p>
+
+<%= link_to 'Back', sites_path %>

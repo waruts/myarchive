@@ -1,0 +1,210 @@
+<!-- -*- mode: html -*- -->
+
+<%= javascript_include_tag "new.js" %>
+
+<div id="bodywrap">
+  <div class="container_12">
+
+    <div class="grid_12 spacer"></div>
+
+    <div class="grid_12">
+    
+      <p> <%= link_to "Back to main page", root_path %> </p>
+
+      <h3> Contents </h3>
+
+      <ol>
+        <li> <a href="z-archive/archive_instructions#structure">Structure of a cached archive</a> </li>
+        <li> <a href="z-archive/archive_instructions#bibfile">Producing the .bib file for the archive</a></li>
+        <li> <a href="z-archive/archive_instructions#prefix">Adding or modifying the prefix of the archive locations</a> </li>
+        <li> <a href="z-archive/archive_instructions#indexfile">Making an index file for the archive</a> </li>
+      </ol>
+
+      <h3> How do I set up a cached archive? </h3>
+
+      <h4 id="structure"> Structure of a cached archive </h4>
+
+      <p> Upon clicking "Snag!", you will get a .zip file containing  </p>
+      <ul>
+        <li> The files necessary to render your reference(s). </li>
+        <li> A .bib file with the bibliographic information of your reference(s) with the BibTeX tag you specify. </li>
+      </ul>
+
+      <p> For example, if you snag the <%= link_to "Python Input/Output Page", "http://docs.python.org/2/tutorial/inputoutput.html" %> using the tag "PythonInOut", your zip file might have the following structure:  </p>
+
+      <pre class="programming"> 
+      --- PythonInOut 
+      ------ files 
+      --------- basic.css 
+      --------- copybutton.js 
+      --------- default.css 
+      --------- doctools.js 
+      --------- inputoutput.html 
+      --------- jquery.js 
+      --------- py.png 
+      --------- pygments.css 
+      --------- sidebar.js 
+      --------- underscore.js 
+      --------- version_switch.js
+      ------ PythonInOut.bib 
+      </pre>
+
+      <p> The file <code class="programming">PythonInOut.bib</code> contains the bibliographic entry </p>
+
+      <pre class="programming"> 
+      @webpage{PythonInOut, 
+        url = {http://docs.python.org/2/tutorial/inputoutput.html}, 
+        author = {Python Software Foundation}, 
+        title = {7. Input and Output - Python v2.7.5 documentation}, 
+        year = {2013}, 
+        lastchecked = {2013-05-27}, 
+        note = {Cached at \url{PythonInOut/inputoutput.html}},
+      }
+      </pre>
+
+      <h4 id="bibfile"> Producing the .bib file for the archive </h4>
+
+      <p> You can then unzip the file into a folder for citations of your current paper/book/project. After archiving three documents, the directory looks like this: </p>
+
+      <pre class="programming"> 
+      --- MyPaperCitations
+      ------ CsarSeSu11
+      --------- files 
+      ------------ dmAR0150.pdf
+      --------- CsarSeSu11.bib 
+      ------ Matheson13
+      --------- files 
+      ------------ btnNext.png
+      ------------ btnNext.png.1
+      ------------ ...
+      ------------ voting_yes.png
+      --------- Matheson13.bib
+      ------ PythonInOut 
+      --------- files 
+      ------------ basic.css 
+      ------------ copybutton.js 
+      ------------ ...
+      ------------ version_switch.js
+      --------- PythonInOut.bib 
+      </pre>
+  
+      <p> You can download our Python script <code class="programming">bibscript.py</code> <%= link_to "here", "http://web.mit.edu/warutsuk/www/bibsnag/bibscript.py" %>. Placing the script at the archive root directory (<code class="programming">MyPaperCitations</code> in this example) and running the command
+
+      <pre class="programming"> 
+      python bibscript.py makebib
+      </pre>
+
+      <p> produces a file <code class="programming">archive.bib</code> which is a concatenation of all the .bib files </p>
+
+      <pre class="programming"> 
+      --- MyPaperCitations
+      ------ CsarSeSu11
+      --------- files 
+      ------------ dmAR0150.pdf
+      --------- CsarSeSu11.bib 
+      ------ Matheson13
+      --------- files 
+      ------------ btnNext.png
+      ------------ btnNext.png.1
+      ------------ ...
+      ------------ voting_yes.png
+      --------- Matheson13.bib
+      ------ PythonInOut 
+      --------- files 
+      ------------ basic.css 
+      ------------ copybutton.js 
+      ------------ ...
+      ------------ version_switch.js
+      --------- PythonInOut.bib 
+      <span style="color:#FF0000">------ bibscript.py</span>
+      <span style="color:#FF0000">------ archive.bib</span>
+      </pre>
+
+      The file <code class="programming">archive.bib</code> has the content
+
+      <pre class="programming"> 
+      @webpage{PythonInOut,
+        url = {http://docs.python.org/2/tutorial/inputoutput.html},
+        author = {},
+        title = {7. Input and Output - Python v2.7.5 documentation},
+        year = {2013},
+        lastchecked = {2013-05-28},
+        note = {Cached at \url{PythonInOut/inputoutput.html}},
+      }
+
+      @webpage{Matheson13,
+        url = {http://web.mit.edu/newsoffice/2013/engineering-course-demystifies-entrepreneurship-0528.html},
+        author = {Rob Matheson},
+        title = {Engineering course ‘demystifies’ entrepreneurship},
+        year = {2013},
+        lastchecked = {2013-05-28},
+        note = {Cached at \url{Matheson13/engineering-course-demystifies-entrepreneurship-0528.html}},
+      }
+
+      @webpage{CsarSeSu11,
+        url = {http://www.math.nagoya-u.ac.jp/fpsac12/download/contributed/dmAR0150.pdf},
+        author = {Sebastian A. Csar, Rik Sengupta, Warut Suksompong},
+        title = {On a Subposet of the Tamari Lattice},
+        year = {2011},
+        lastchecked = {2013-05-28},
+        note = {Cached at \url{CsarSeSu11/dmAR0150.pdf}},
+      }
+      </pre>
+
+      <h4 id="prefix"> Adding or modifying the prefix of the archive locations </h4>
+
+      <p> You can add or later modify the prefix of the archive locations in the .bib files. To do this, run </p>
+
+      <pre class="programming"> 
+      python bibscript.py prefix your-prefix-goes-here
+      </pre>
+
+      <p> For example, running </p>
+
+      <pre class="programming"> 
+      python bibscript.py prefix http://www.example.com/us
+      </pre>
+
+      <p> adds the prefix <code class="programming">http://www.example.com/us</code> to all .bib files including <code class="programming">archive.bib</code>, or modifies the existing prefix to the new one.  </p>
+
+      <pre class="programming"> 
+      note = {Cached at \url{http://www.example.com/us/CsarSeSu11/dmAR0150.pdf}}
+      </pre>
+
+      <p> If you only want to add the prefix to the .bib files corresponding to the individual archives, you can put in the <code class="programming">--sub</code> flag. ("subdirectory")
+
+      <pre class="programming"> 
+      python bibscript.py prefix --sub http://www.example.com/us
+      </pre>
+
+      <p> In contrast, if you only want to add the prefix to the main file <code class="programming">archive.bib</code>, you can put in the <code class="programming">--main</code> flag. ("main directory")
+
+      <pre class="programming"> 
+      python bibscript.py prefix --main http://www.example.com/us
+      </pre>
+
+      <h4 id="indexfile"> Making an index file for the archive </h4>
+
+      <p> You can make an index file for the archive with the tree structure of the files and directories within the archive. The script allows you to include a message of your choice, e.g. specifying who/where to contact for removing the archive files from the web. The message needs to be specified in quotes. For example, you can run </p>
+
+      <pre class="programming"> 
+      python bibscript.py index "If you assert ownership of any file in this archive and would like it to be taken down, please 
+        contact jbaker@example.com."
+      </pre>
+
+      <p> This produces the following <code class="programming">index.html</code> file in your archive: </p>
+
+      <img src="/z-archive/public/images/index_example.png" alt="Example of an index file">
+
+
+
+    </div>
+
+    <div class="clear"></div>
+    <div class="grid_12 spacer"></div>
+    <div class="grid_12 spacer"></div>
+
+  </div>
+</div>
+
+

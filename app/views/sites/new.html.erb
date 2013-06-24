@@ -1,0 +1,79 @@
+<!-- -*- mode: html -*- -->
+
+<%= javascript_include_tag "new.js" %>
+
+<div id="bodywrap">
+  <div class="container_12">
+
+    <div class="grid_12 spacer"></div>
+    <div class="grid_12">
+      <p id="notice"><%= @notice %></p>
+    </div>
+    <div class="grid_6">
+      <h4> Download form </h4>
+      <%= form_tag "z-archive/download", :id => "download_form" do -%> 
+
+        <label class="required_field">
+          URLs* (If more than one, please separate by whitespace) 
+          <%= text_area_tag "url", params[:url], :rows => 4, :cols => 40 %> 
+        </label>
+        <label>
+          Author (What you want to appear in BibTeX; separate names by "and")
+          <%= text_field_tag "author", params[:author], :size => 40 %> 
+        </label>
+        <label>
+          Title (What you want to appear in BibTeX)
+          <%= text_field_tag "title", params[:title], :size => 40 %> 
+        </label>
+        <label>
+          Year 
+          <%= text_field_tag "year", params[:year], :size => 20 %> 
+        </label>
+        <label class="required_field">
+          Tag* 
+          <%= text_field_tag "name", params[:name], :size => 20, :maxlength => 20 %> 
+        </label>
+        <p><a href="z-archive" id="show_advanced">Show advanced options</a></p>
+        <label class="noblock advanced_option">
+          Select depth of recursion <%= select_tag "recursive", "<option>0</option><option>1</option><option>2</option><option>3</option>".html_safe %>
+        </label>
+        <label class="noblock advanced_option">
+          <%= check_box_tag "different_domain", true, true %> Fetch embedded images and objects from domains outside my URLs.
+        </label>
+        <%= submit_tag "Snag!" %>
+    <% end -%>
+    
+    </div>
+    <div class="grid_6">
+
+      <h4> Why use BibSnag? </h4>
+      <p> With the growing popularity of the Internet nowadays, it has become much more common for book and paper authors to cite references on the web as opposed to those in print. Those references can be rendered inaccessible at virtually any time, however. BibSnag lets you easily cache a snapshot of your references and manage it. </p>
+
+      <h4> How to use BibSnag? </h4>
+      <p> Simply fill in the download form and click "Snag!". You will get a .zip file containing </p>
+      <ul>
+        <li> The files necessary to render your reference(s). </li>
+        <li> A .bib file with the bibliographic information of your reference(s) with the BibTeX tag you specify. </li>
+      </ul>
+
+      <h4> How do I prevent BibSnag from caching webpages on my site? </h4>
+      <p> You can place a simple robots.txt file on your Web server. We respect robots.txt files. For more information, see <a href="http://www.robotstxt.org/">The Web Robots Pages</a>. </p>
+
+      <h4> Why can't BibSnag download my reference? </h4>
+      <p> It is possible that the owner of your reference forbids our program from downloading it by placing a robots.txt file. For more information, see <a href="http://wget.addictivecode.org/FrequentlyAskedQuestions#How_can_I_make_Wget_ignore_the_robots.txt_file.2Fno-follow_attribute.3F">here</a>. It is also possible that your reference is too large.</p>
+
+      <h4> What is the BibTeX format for authors and titles? </h4>
+      <p> See <a href="http://nwalsh.com/tex/texhelp/bibtx-22.html">Normal Walsh's page</a>. </p>
+
+      <h4> How do I set up a cached archive? </h4>
+      <p> Click <%= link_to "here", archive_instructions_path%> for instructions.
+
+    </div>
+    <div class="clear"></div>
+    <div class="grid_12 spacer"></div>
+    <div class="grid_12 spacer"></div>
+
+  </div>
+</div>
+
+

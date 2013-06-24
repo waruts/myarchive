@@ -1,0 +1,28 @@
+<p>
+Please input the URL you would like to archive, e.g. www.google.com. Don't put in the "http://" part.
+</p>
+
+<%= form_for(@site) do |site_form| %>
+  <% if @site.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site.errors.count, "error") %> prohibited this site from being saved:</h2>
+
+      <ul>
+      <% @site.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+  <div class="field">
+    <%= site_form.text_field :url %>
+  </div>
+  <div class="actions">
+    <%= site_form.submit "Archive site!" %>
+  </div>
+<% end %>
+
+<!--<p>
+<%= link_to 'Show all archived sites', show_all_path %>
+</p>-->
